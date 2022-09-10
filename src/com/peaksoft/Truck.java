@@ -4,7 +4,7 @@ public class Truck {
     private int id;
     private String name;
     private Driver driver;
-    private Status status;
+    private State status;
 
     public int getId() {
         return id;
@@ -30,15 +30,15 @@ public class Truck {
         this.driver = driver;
     }
 
-    public com.peaksoft.Status getStatus() {
+    public com.peaksoft.State getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(State status) {
         this.status = status;
     }
 
-    public static Truck createTruck(int id, String name, Driver driver, Status status){
+    public static Truck createTruck(int id, String name, Driver driver, State status){
         Truck truck = new Truck();
         truck.id = id;
         truck.name = name;
@@ -55,7 +55,7 @@ public class Truck {
                 "         | " + status;
     }
 }
-enum Status{
+enum State{
     BASE,
     ROUTE,
     REPAIR;
