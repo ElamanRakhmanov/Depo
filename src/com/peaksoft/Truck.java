@@ -1,36 +1,40 @@
 package com.peaksoft;
 
+import java.nio.file.Path;
+
+import static com.peaksoft.Main.*;
+
 public class Truck {
-    private int id;
-    private String name;
-    private Driver driver;
+    private int idTruck;
+    private String nameTruck;
+    private String driver;
     private State status;
 
-    public int getId() {
-        return id;
+    public int getIdTruck() {
+        return idTruck;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdTruck(int idTruck) {
+        this.idTruck = idTruck;
     }
 
-    public String getName() {
-        return name;
+    public String getNameTruck() {
+        return nameTruck;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameTruck(String nameTruck) {
+        this.nameTruck = nameTruck;
     }
 
-    public Driver getDriver() {
+    public String getDriver() {
         return driver;
     }
 
-    public void setDriver(Driver driver) {
+    public void setDriver(String driver) {
         this.driver = driver;
     }
 
-    public com.peaksoft.State getStatus() {
+    public State getStatus() {
         return status;
     }
 
@@ -38,21 +42,19 @@ public class Truck {
         this.status = status;
     }
 
-    public static Truck createTruck(int id, String name, Driver driver, State status){
+    public static Truck createTruck(int idTruck, String nameTruck, String driver, State status){
         Truck truck = new Truck();
-        truck.id = id;
-        truck.name = name;
+        truck.idTruck = idTruck;
+        truck.nameTruck = nameTruck;
         truck.driver = driver;
         truck.status = status;
         return truck;
     }
 
+
     @Override
     public String toString() {
-        return " " + id +
-                "|  " + name +
-                "  |  " + driver +
-                "         | " + status;
+        return " " + idTruck + "|  " + nameTruck + "  |  " + driver + "         | " + status;
     }
 }
 enum State{

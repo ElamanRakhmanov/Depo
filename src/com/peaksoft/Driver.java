@@ -1,34 +1,36 @@
 package com.peaksoft;
 
+import java.nio.file.Path;
+
 public class Driver {
-    private int id;
-    private String name;
+    private int idDriver;
+    private String nameDriver;
     private String truck;
 
     public Driver(){
 
     }
 
-    public Driver(int id, String name, String truck) {
-        this.id = id;
-        this.name = name;
+    public Driver(int idDriver, String nameDriver, String truck) {
+        this.idDriver = idDriver;
+        this.nameDriver = nameDriver;
         this.truck = truck;
     }
 
-    public int getId() {
-        return id;
+    public int getIdDriver() {
+        return idDriver;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdDriver(int idDriver) {
+        this.idDriver = idDriver;
     }
 
-    public String getName() {
-        return name;
+    public String getNameDriver() {
+        return nameDriver;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameDriver(String nameDriver) {
+        this.nameDriver = nameDriver;
     }
 
     public String getTruck() {
@@ -37,5 +39,18 @@ public class Driver {
 
     public void setTruck(String truck) {
         this.truck = truck;
+    }
+
+    public static Driver createDriver(int idDriver, String nameDriver, String truck){
+        Driver driver = new Driver();
+        driver.idDriver = idDriver;
+        driver.nameDriver = nameDriver;
+        driver.truck = truck;
+        return driver;
+    }
+
+    @Override
+    public String toString() {
+        return idDriver + " | " + nameDriver + " | " + truck;
     }
 }
