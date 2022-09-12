@@ -1,5 +1,6 @@
 package com.peaksoft;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TruckService {
@@ -32,7 +33,7 @@ public class TruckService {
             }
             switch(actionNumber){
                 case 1 -> changeDriver(chooseTruck, drivers);
-                case 2 -> startDriving(chooseTruck);
+                case 2 -> startDriving(chooseTruck, new Driver());
                 case 3 -> startRepair(chooseTruck);
             }
             System.out.println(chooseTruck);
@@ -48,14 +49,32 @@ public class TruckService {
             for (Driver driver : drivers) {
                 if(driver.getTruck().equals(" ")){
                     if(!truck.getDriver().equals(" ")){
-
+                        Driver driver1 = getDriverName(truck.getDriver(), drivers);
+                        driver1.setTruck(" ");
                     }
+                    truck.setDriver(driver.getNameDriver());
+                    driver.setTruck(truck.getNameTruck());
+                    System.out.println("Now truck " + truck.getNameTruck() +
+                            "has a driver" + driver.getNameDriver());
+                    break;
                 }
             }
-
+            if(truck.getDriver().equals(" ")){
+                System.out.println("No free driver");
+            }
         }
     }
 
+    private static Driver getDriverName(String driverName, Driver[] drivers) {
+        return Arrays.stream(drivers).filter(d -> d.getNameDriver().equals(driverName)).findFirst().get();
+    }
+
+    public static void startDriving(Truck truck, Driver driver){
+        System.out.println("Now truck " + truck + " on the road and it's driver is " + driver + ".");
+    }
+    public static void startRepair(Truck truck){
+        System.out.println("Now truck " + truck + " on repair.");
+    }
 
 
 }

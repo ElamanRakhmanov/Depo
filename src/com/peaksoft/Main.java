@@ -9,6 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+import static com.peaksoft.Truck.infoTruck;
+import static com.peaksoft.TruckService.*;
+
 public class Main {
     public static final GsonBuilder BUILDER = new GsonBuilder();
     public static final Gson GSON = BUILDER.setPrettyPrinting().create();
@@ -33,20 +36,10 @@ public class Main {
 
         infoTruck(PATH_TRUCKS);
         infoDrivers(PATH_DRIVERS);
-    }
-    public static void infoTruck(Path path){
-        System.out.println("\n\t\tINFO ABOUT TRUCKS\n" +
-                "---------------------------------------------------\n" +
-                "№   |   Truck         |    Driver   |   State     |\n" +
-                "---------------------------------------------------");
-        Truck[] trucks = GSON.fromJson(readFile(path), Truck[].class);
-        for (Truck truck : trucks) {
-            System.out.printf("%-1s   |", truck.getId());
-            System.out.printf(" %-14s  |", truck.getName());
-            System.out.printf(" %-10s  |", truck.getDriver());
-            System.out.printf(" %-10s  |", truck.getStatus());
-            System.out.println("\n---------------------------------------------------");
-        }
+
+        Truck[] trucks1 = GSON.fromJson(readFile(PATH_TRUCKS), Truck[].class);
+        Driver[] drivers1 = GSON.fromJson(readFile(PATH_DRIVERS), Driver[].class);
+        findTruck(trucks1, drivers1);
     }
     public static void infoDrivers(Path path){
         System.out.println("\n\t\tINFO ABOUT DRIVERS\n" +
@@ -55,11 +48,12 @@ public class Main {
                 "-------------------------------");
         Driver[] drivers = GSON.fromJson(readFile(path), Driver[].class);
         for (Driver driver : drivers) {
-            System.out.printf("%-1s   |", driver.getId());
-            System.out.printf(" %-8s  |", driver.getName());
+            System.out.printf("%-1s   |", driver.getIdDriver());
+            System.out.printf(" %-8s  |", driver.getNameDriver());
             System.out.printf(" %-10s  |", driver.getTruck());
             System.out.println("\n-------------------------------");
         }
+
     }
     private static void writeFile(String object, Path path){
         try {

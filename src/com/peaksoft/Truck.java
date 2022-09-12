@@ -51,6 +51,21 @@ public class Truck {
         return truck;
     }
 
+    public static void infoTruck(Path path){
+        System.out.println("\n\t\tINFO ABOUT TRUCKS\n" +
+                "---------------------------------------------------\n" +
+                "№   |   Truck         |    Driver   |   State     |\n" +
+                "---------------------------------------------------");
+        Truck[] trucks = GSON.fromJson(readFile(path), Truck[].class);
+        for (Truck truck : trucks) {
+            System.out.printf("%-1s   |", truck.getIdTruck());
+            System.out.printf(" %-14s  |", truck.getNameTruck());
+            System.out.printf(" %-10s  |", truck.getDriver());
+            System.out.printf(" %-10s  |", truck.getStatus());
+            System.out.println("\n---------------------------------------------------");
+        }
+    }
+
 
     @Override
     public String toString() {
