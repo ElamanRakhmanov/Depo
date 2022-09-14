@@ -2,6 +2,9 @@ package com.peaksoft;
 
 import java.nio.file.Path;
 
+import static com.peaksoft.Main.GSON;
+import static com.peaksoft.Main.readFile;
+
 public class Driver {
     private int idDriver;
     private String nameDriver;
@@ -47,6 +50,20 @@ public class Driver {
         driver.nameDriver = nameDriver;
         driver.truck = truck;
         return driver;
+    }
+    public static void infoDrivers(Path path){
+        System.out.println("\n\t\tINFO ABOUT DRIVERS\n" +
+                "-------------------------------\n" +
+                "№   |   Name    |    Truck    |\n" +
+                "-------------------------------");
+        Driver[] drivers = GSON.fromJson(readFile(path), Driver[].class);
+        for (Driver driver : drivers) {
+            System.out.printf("%-1s   |", driver.getIdDriver());
+            System.out.printf(" %-8s  |", driver.getNameDriver());
+            System.out.printf(" %-10s  |", driver.getTruck());
+            System.out.println("\n-------------------------------");
+        }
+
     }
 
     @Override

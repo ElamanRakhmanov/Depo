@@ -33,7 +33,7 @@ public class TruckService {
             }
             switch(actionNumber){
                 case 1 -> changeDriver(chooseTruck, drivers);
-                case 2 -> startDriving(chooseTruck, new Driver());
+                case 2 -> startDriving(chooseTruck);
                 case 3 -> startRepair(chooseTruck);
             }
             System.out.println(chooseTruck);
@@ -70,11 +70,16 @@ public class TruckService {
     }
 
 
-    public static void startDriving(Truck truck, Driver driver){
-        System.out.println("Now truck " + truck.getNameTruck() + " on the road and it's driver is " + driver.getNameDriver() + ".");
+    public static void startDriving(Truck truck){
+            System.out.println("Now truck " + truck.getNameTruck() + " on the road and it's driver is " + truck.getDriver() + ".");
     }
     public static void startRepair(Truck truck){
-        System.out.println("Now truck " + truck.getNameTruck() + " on repair.");
+        if(truck.getStatus().equals(State.REPAIR)){
+            System.out.println("Truck is already on repair");
+        }else{
+            truck.setStatus(State.REPAIR);
+            System.out.println("Now truck " + truck.getNameTruck() + " on repair.");
+        }
     }
 
 
