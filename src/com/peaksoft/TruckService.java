@@ -55,7 +55,7 @@ public class TruckService {
                     truck.setDriver(driver.getNameDriver());
                     driver.setTruck(truck.getNameTruck());
                     System.out.println("Now truck " + truck.getNameTruck() +
-                            "has a driver" + driver.getNameDriver());
+                            " has a driver " + driver.getNameDriver());
                     break;
                 }
             }
@@ -69,11 +69,12 @@ public class TruckService {
         return Arrays.stream(drivers).filter(d -> d.getNameDriver().equals(driverName)).findFirst().get();
     }
 
+
     public static void startDriving(Truck truck, Driver driver){
-        System.out.println("Now truck " + truck + " on the road and it's driver is " + driver + ".");
+        System.out.println("Now truck " + truck.getNameTruck() + " on the road and it's driver is " + driver.getNameDriver() + ".");
     }
     public static void startRepair(Truck truck){
-        System.out.println("Now truck " + truck + " on repair.");
+        System.out.println("Now truck " + truck.getNameTruck() + " on repair.");
     }
 
 
